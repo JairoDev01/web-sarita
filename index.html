@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para Sarita 🩷</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Hola, Sarita 🩷</h1>
+    <p>Esta página es para recordarte lo especial y única que eres.</p>
+  </header>
+
+  <section class="slider">
+    <div class="slides" >
+      <div class="slide active">
+        <p>"Eres increíble en todo lo que haces. Nunca dejes que el estrés te quite lo especial que eres. ❤️"</p>
+      </div>
+      <div class="slide">
+        <p>"Recuerda que cada pequeño esfuerzo te acerca a algo maravilloso. Estoy aquí para apoyarte. 😊"</p>
+      </div>
+      <div class="slide">
+        <p>"Hoy es un nuevo día para demostrar lo fuerte y capaz que eres. ¡Ánimo! 🌟"</p>
+      </div>
+      <div class="slide">
+        <p>"Tus sueños son el comienzo de algo grande. No dejes de luchar por ellos."</p>
+      </div>
+      <div class="slide">
+        <p>"Cada vez que hablo contigo, mi día se vuelve el mejor de todos. 🥰❤️"</p>
+      </div>      
+      <div class="slide">
+        <p>"Eres como mi canción favorita: no importa cuántas veces te escuche, siempre quiero más. 🫶"</p>
+      </div>
+
+
+    </div>
+    <button class="prev" onclick="prevSlide()">&#10094;</button>
+    <button class="next" onclick="nextSlide()">&#10095;</button>
+  </section>
+
+  <footer>
+    <p>Creado con mucho cariño para Sarita. 🌸</p>
+  </footer>
+
+  <script>
+    let index = 0;
+const slides = document.querySelectorAll('.slide');
+
+function showSlide(n) {
+  slides.forEach(slide => {
+    slide.classList.remove('active');
+    slide.style.display = 'none'; // Ocultar todas las slides
+  });
+  slides[n].classList.add('active');
+  slides[n].style.display = 'flex'; // Mostrar la slide activa
+}
+
+function nextSlide() {
+  index = (index + 1) % slides.length;
+  showSlide(index);
+}
+
+function prevSlide() {
+  index = (index - 1 + slides.length) % slides.length;
+  showSlide(index);
+}
+
+// Inicializa el primer slide
+showSlide(index);
+  </script>
+</body>
+</html>
