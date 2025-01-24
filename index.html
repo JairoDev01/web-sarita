@@ -13,7 +13,8 @@
   </header>
   <!-- Añadir el botón debajo del slider (sección principal) -->
   <section class="extra">
-    <button class="btn-flowers" onclick="loadFlores()">🌸 Ver Arreglos de Flores 🌸</button>
+    <button class="btn-flowers" id="ver-arreglo-btn"
+    >🌸 Ver Arreglos de Flores 🌸</button>
   </section>
  <!-- <section class="flowers-screen" id="flowers-screen">
     <button class="btn-back" onclick="goBack()">🔙 Regresar</button>
@@ -163,7 +164,7 @@ showSlide(index);
       document.querySelector('.extra').style.display = 'block';
     }*/
 
-    function loadFlores() {
+    /*function loadFlores() {
       // Ocultar la pantalla principal
       document.querySelector('header').style.display = 'none';
       document.querySelector('.slider').style.display = 'none';
@@ -194,7 +195,10 @@ showSlide(index);
         // Mostrar la sección si ya fue cargada
         floresContainer.style.display = 'block';
       }
-    }
+    }*/
+    document.getElementById('ver-arreglo-btn').addEventListener('click', function() {
+      window.location.href = 'flores.html';
+    });
 
     function goBack() {
       // Ocultar la sección de flores
