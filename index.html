@@ -11,7 +11,41 @@
     <h1>Hola, Sarita 🩷</h1>
     <p>Esta página es para recordarte lo especial y única que eres.</p>
   </header>
+  <!-- Añadir el botón debajo del slider (sección principal) -->
+  <section class="extra">
+    <button class="btn-flowers" onclick="loadFlores()">🌸 Ver Arreglos de Flores 🌸</button>
+  </section>
+ <!-- <section class="flowers-screen" id="flowers-screen">
+    <button class="btn-back" onclick="goBack()">🔙 Regresar</button>
+    <div class="flower-arrangements">
+      &lt;!&ndash; Flor 1 &ndash;&gt;
+      <div class="flower-container">
+        <svg class="flower flower1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="10" fill="#ff6b81" />
+          <path d="M50 15 C65 20, 85 50, 50 85 C15 50, 35 20, 50 15" fill="#ff96cd" />
+        </svg>
+      </div>
 
+      &lt;!&ndash; Flor 2 &ndash;&gt;
+      <div class="flower-container">
+        <svg class="flower flower2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="10" fill="#ffd36b" />
+          <path d="M50 15 C60 20, 80 50, 50 85 C20 50, 40 20, 50 15" fill="#ffe775" />
+        </svg>
+      </div>
+
+      &lt;!&ndash; Flor 3 &ndash;&gt;
+      <div class="flower-container">
+        <svg class="flower flower3" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="10" fill="#96d6ff" />
+          <path d="M50 15 C65 22, 85 50, 50 85 C10 50, 35 22, 50 15" fill="#96cfff" />
+        </svg>
+      </div>
+    </div>
+  </section>-->
+
+  <!-- Contenedor para la página de flores -->
+  <section id="flores-container" style="display: none;"></section>
   <section class="slider">
     <div class="slides" >
       <div class="slide active">
@@ -71,6 +105,73 @@ function prevSlide() {
 
 // Inicializa el primer slide
 showSlide(index);
+
+    /*function showFlowersPage() {
+      // Ocultar la pantalla principal
+      document.querySelector('header').style.display = 'none';
+      document.querySelector('.slider').style.display = 'none';
+      document.querySelector('.extra').style.display = 'none';
+
+      // Mostrar la pantalla de flores
+      const flowersScreen = document.getElementById('flowers-screen');
+      flowersScreen.style.display = 'flex';
+    }
+
+    function goBack() {
+      // Ocultar la pantalla de flores
+      const flowersScreen = document.getElementById('flowers-screen');
+      flowersScreen.style.display = 'none';
+
+      // Mostrar la pantalla principal
+      document.querySelector('header').style.display = 'block';
+      document.querySelector('.slider').style.display = 'block';
+      document.querySelector('.extra').style.display = 'block';
+    }*/
+
+    function loadFlores() {
+      // Ocultar la pantalla principal
+      document.querySelector('header').style.display = 'none';
+      document.querySelector('.slider').style.display = 'none';
+      document.querySelector('.extra').style.display = 'none';
+
+      // Contenedor de flores
+      const floresContainer = document.getElementById('flores-container');
+
+      // Cargar el contenido de flores.html solo si está vacío
+      if (!floresContainer.innerHTML) {
+        fetch('./flores.html')
+                .then(response => response.text())
+                .then(data => {
+                  floresContainer.innerHTML = data;
+
+                  // Muestra la sección con flores
+                  floresContainer.style.display = 'block';
+
+                  // Agrega un botón de regresar a la pantalla principal
+                  const backButton = document.createElement('button');
+                  backButton.textContent = '🔙 Regresar';
+                  backButton.classList.add('btn-back');
+                  backButton.onclick = goBack;
+                  floresContainer.prepend(backButton);
+                })
+                .catch(error => console.error('Error cargando flores:', error));
+      } else {
+        // Mostrar la sección si ya fue cargada
+        floresContainer.style.display = 'block';
+      }
+    }
+
+    function goBack() {
+      // Ocultar la sección de flores
+      const floresContainer = document.getElementById('flores-container');
+      floresContainer.style.display = 'none';
+
+      // Mostrar la pantalla principal
+      document.querySelector('header').style.display = 'block';
+      document.querySelector('.slider').style.display = 'block';
+      document.querySelector('.extra').style.display = 'block';
+    }
+
   </script>
 </body>
 </html>

@@ -159,4 +159,266 @@
       font-size: 0.8rem;
     }
   }
+
+/* Ocultar slider al mostrar la pantalla de las flores */
+.flowers-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(to bottom, #f7e4ff, #ff96cd);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.btn-back {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  padding: 10px 20px;
+  background-color: #ff5881;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-back:hover {
+  background-color: #ff77a2;
+}
+
+/* Flores */
+.flower-arrangements {
+  display: flex;
+  gap: 20px;
+}
+
+.flower {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  position: relative;
+  animation: float 2s ease-in-out 0s infinite;
+}
+
+.flower1 {
+  background: radial-gradient(circle, #ff96cd, #ff5e84);
+}
+
+.flower2 {
+  background: radial-gradient(circle, #f9ff96, #a3e072);
+}
+
+.flower3 {
+  background: radial-gradient(circle, #b396ff, #7042ff);
+}
+
+/* Pétalos (Pseudo-elementos para la flor) */
+.flower::before,
+.flower::after {
+  content: '';
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: inherit;
+}
+
+.flower::before {
+  transform: rotate(45deg);
+}
+
+.flower::after {
+  transform: rotate(-45deg);
+}
+
+/* Animaciones */
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+/* Contenedor general */
+.flowers-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(to bottom, #f7e4ff, #ff96cd);
+  overflow: hidden;
+  padding: 20px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.btn-back {
+  position: fixed; /* Fija el botón en una ubicación específica de la pantalla */
+  top: 80px; /* Lo coloca 20px desde la parte superior */
+  right: 80px; /* Lo alinea 20px desde la derecha */
+  padding: 20px 90px; /* Un margen pequeño alrededor del texto */
+  background-color: #ff5881;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.btn-back:hover {
+  background-color: #ff77a2;
+}
+
+/* Contenedor de flores */
+.flower-arrangements {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+.flower-container {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: growFlower 3s ease-out forwards;
+}
+
+.flower {
+  width: 0; /* Comienza pequeña */
+  height: 0; /* Comienza pequeña */
+  transform-origin: center;
+}
+
+/* Animación: crecimiento */
+@keyframes growFlower {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(0.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Aparición de forma suave */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.btn-flowers {
+  position: fixed; /* Fija el botón en una ubicación específica de la pantalla */
+  top: 80px; /* Lo coloca 20px desde la parte superior */
+  right: 80px; /* Lo alinea 20px desde la derecha */
+  padding: 20px 90px; /* Un margen pequeño alrededor del texto */
+  background-color: #ff5881; /* Fondo del botón */
+  color: white; /* Color del texto */
+  font-size: 16px; /* Tamaño de fuente */
+  font-weight: bold; /* Hace el texto un poco más destacado */
+  border: none; /* Elimina el borde por defecto */
+  border-radius: 12px; /* Bordes redondeados del botón */
+  cursor: pointer; /* Cambia el cursor al pasar el ratón */
+  z-index: 1000; /* Asegura que esté encima de otros elementos */
+  white-space: nowrap; /* Previene que el texto se rompa en otra línea */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Aplica una sombra alrededor del botón */
+}
+
+.btn-flowers:hover {
+  background-color: #ff77a2; /* Cambia de color al pasar el mouse */
+}
+
+/* Contenedor de la pantalla de flores */
+.flowers-screen {
+  display: none; /* Ocultar por defecto */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(to bottom, #f7e4ff, #ff96cd);
+  overflow: hidden;
+  padding: 20px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Botón para regresar */
+.btn-back {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  padding: 10px 20px;
+  background-color: #ff5881;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.btn-back:hover {
+  background-color: #ff77a2;
+}
+
+/* Contenedor de todas las flores */
+.flower-arrangements {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Contenedor de cada flor individual */
+.flower-container {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estilo para las flores */
+.flower {
+  width: 100%; /* Tamaño inicial del SVG */
+  height: 100%;
+  transform: scale(0); /* Inicia pequeña */
+  animation: growFlower 1.5s ease-in-out forwards; /* Animación de crecimiento */
+}
+
+/* Animación de crecimiento */
+@keyframes growFlower {
+  0% {
+    transform: scale(0); /* Comienza invisible */
+  }
+  100% {
+    transform: scale(1); /* Crece completamente */
+  }
+}
+
   
