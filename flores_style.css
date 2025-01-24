@@ -62,7 +62,13 @@ body {
 }
 
 .flowers {
-    position: relative;
+    width: 100%;
+    height: 100vh; /* Llenar el alto de la pantalla */
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    position: static; /* Para trabajar con los elementos en su interior */
+    overflow: hidden; /* Oculta cualquier contenido que desborde */
     transform: scale(0.9);
 }
 
