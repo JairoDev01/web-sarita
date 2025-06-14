@@ -465,4 +465,114 @@
   display: none;
 }
 
+.cumple-balloons {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+.balloon {
+  width: 60px;
+  height: 80px;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  position: relative;
+  animation: float 3s ease-in-out infinite;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+.balloon1 { background: #ffb3c6; left: 0; animation-delay: 0s;}
+.balloon2 { background: #ffe066; left: 0; animation-delay: 0.5s;}
+.balloon3 { background: #b5ead7; left: 0; animation-delay: 1s;}
+.balloon4 { background: #ffdac1; left: 0; animation-delay: 1.5s;}
+@keyframes float {
+  0% { transform: translateY(0);}
+  50% { transform: translateY(-40px);}
+  100% { transform: translateY(0);}
+}
+.balloon::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -30px;
+  width: 2px;
+  height: 30px;
+  background: #aaa;
+  transform: translateX(-50%);
+}
+.cumple-title {
+  text-align: center;
+  font-size: 2.2em;
+  color: #d72660;
+  margin-bottom: 30px;
+  animation: pop 1s;
+}
+@keyframes pop {
+  0% { transform: scale(0.7);}
+  80% { transform: scale(1.1);}
+  100% { transform: scale(1);}
+}
+.slider-cumple .slide {
+  border-radius: 18px;
+  margin: 0 10px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  min-height: 120px;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2em;
+  transition: background 0.5s, color 0.5s;
+  animation: fadeIn 1s;
+}
+@keyframes fadeIn {
+  from { opacity: 0;}
+  to { opacity: 1;}
+}
+.slider-cumple .prev, .slider-cumple .next {
+  background: #fff0f6;
+  color: #d72660;
+  border: none;
+  font-size: 2em;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  margin: 0 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: background 0.3s;
+}
+.slider-cumple .prev:hover, .slider-cumple .next:hover {
+  background: #ffe066;
+}
+
+@media (max-width: 600px) {
+  .slider-cumple {
+    width: 95vw;
+    max-width: 100%;
+    min-height: unset;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .slider-cumple .slides {
+    width: 100%;
+    height: auto;
+  }
+  .slider-cumple .slide {
+    width: 100%;
+    min-height: 120px;
+    height: auto;
+    word-break: break-word;
+    white-space: normal;
+    padding: 16px 8px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+}
   

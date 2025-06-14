@@ -16,6 +16,8 @@
   <section class="extra">
     <button class="btn-flowers" id="ver-arreglo-btn"
     >🌸 Ver Arreglos de Flores 🌸</button>
+    <button class="btn-birthday" id="ver-cumple-btn">🎉 Feliz Cumpleaños #20 Sarita 🎉</button>
+
   </section>
  <!-- <section class="flowers-screen" id="flowers-screen">
     <button class="btn-back" onclick="goBack()">🔙 Regresar</button>
@@ -48,6 +50,7 @@
 
   <!-- Contenedor para la página de flores -->
   <section id="flores-container" style="display: none;"></section>
+  <section id="cumple-container" style="display: none;"></section>
   <section class="slider">
     <div class="slides" >
       <div class="slide active">
@@ -209,6 +212,10 @@ showSlide(index);
       window.location.href = 'flores.html';
     });
 
+    document.getElementById('ver-cumple-btn').addEventListener('click', function() {
+      mostrarCumple();
+    });
+
     function goBack() {
       // Ocultar la sección de flores
       const floresContainer = document.getElementById('flores-container');
@@ -294,6 +301,82 @@ showSlide(index);
         }
       });
     });*/
+    function mostrarCumple() {
+      // Oculta la pantalla principal
+      document.querySelector('header').style.display = 'none';
+      document.querySelector('.slider').style.display = 'none';
+      document.querySelector('.extra').style.display = 'none';
+
+      // Muestra la pantalla de cumpleaños
+      const cumpleContainer = document.getElementById('cumple-container');
+      cumpleContainer.innerHTML = `
+  <div class="cumple-balloons">
+    <div class="balloon balloon1"></div>
+    <div class="balloon balloon2"></div>
+    <div class="balloon balloon3"></div>
+    <div class="balloon balloon4"></div>
+  </div>
+  <h2 class="cumple-title">🎂 Feliz Cumpleaños Sarita 🎂</h2>
+  <section class="slider slider-cumple">
+    <div class="slides">
+    <div class="slide" style="background: #fff; color: #ff69b4;">
+        <p>Hoy celebro tu vida, tu sonrisa y todo lo que eres. ¡Feliz cumpleaños, Sarita! Que este año esté lleno de sueños cumplidos, amor y momentos inolvidables. Te mereces lo más bonito del mundo. 🎈</p>
+      </div>
+      <div class="slide" style="background: #fff; color: #ff69b4;">
+        <p>Son solo tres flores… pero si supieras todo lo que dicen por mí. Cada una representa algo que siento por ti, y que nace desde el cariño más sincero.
+
+No es casualidad que te las dé justo hoy. Es tu cumpleaños, y quería que supieras cuánto te pienso, cuánto me encantas… y lo feliz que soy simplemente por tenerte cerca, así sea un ratito, así sea en silencio.</p>
+      </div>
+      <div class="slide" style="background: #ffb347; color: #b85c00;">
+        <p>🧡 Gerbera Naranja:
+Esta flor es para darte un empujoncito de ánimo justo donde más lo necesitas: en tu trabajo. Sé que últimamente han sido días complicados, pero también sé de lo que eres capaz. Confía en ti, en lo que sabes, y en todo lo bueno que viene. Yo confío, y mucho. Todo va a salir bien… a tu ritmo, a tu manera, como solo tú sabes hacerlo.</p>
+      </div>
+      <div class="slide active" style="background: #ffb3c6; color: #fff;">
+        <p>🌸 Gerbera Rosa:
+Esta flor me recuerda lo mucho que admiro en ti. Tienes una forma tan bonita de ser… femenina, delicada, con esos valores y modales que hoy en día casi no se ven. Estar cerca de ti me hace sentir en paz, como si todo estuviera en el lugar correcto.</p>
+      </div>
+
+      <div class="slide" style="background: #ffdac1; color: #d72660;">
+        <p>❤️ Gerbera Roja:
+No te voy a mentir, esta flor es la que más me cuesta explicar… porque representa lo que siento cuando estoy contigo: ese cariño fuerte que no se me va, las ganas de abrazarte, de besarte, de compartir más tiempo contigo. Tal vez no diga mucho, pero si supieras lo feliz que me harías si un día me eligieras…</p>
+      </div>
+
+
+    </div>
+    <button class="prev prev-cumple">&#10094;</button>
+    <button class="next next-cumple">&#10095;</button>
+  </section>
+  <button class="btn-back" onclick="goBackCumple()">🔙 Regresar</button>
+`;
+      cumpleContainer.style.display = 'block';
+
+      // Slider cumpleaños
+      let indexCumple = 0;
+      const slidesCumple = cumpleContainer.querySelectorAll('.slider-cumple .slide');
+      function showSlideCumple(n) {
+        slidesCumple.forEach(slide => {
+          slide.classList.remove('active');
+          slide.style.display = 'none';
+        });
+        slidesCumple[n].classList.add('active');
+        slidesCumple[n].style.display = 'flex';
+      }
+      showSlideCumple(indexCumple);
+      cumpleContainer.querySelector('.next-cumple').onclick = function() {
+        indexCumple = (indexCumple + 1) % slidesCumple.length;
+        showSlideCumple(indexCumple);
+      };
+      cumpleContainer.querySelector('.prev-cumple').onclick = function() {
+        indexCumple = (indexCumple - 1 + slidesCumple.length) % slidesCumple.length;
+        showSlideCumple(indexCumple);
+      };
+    }
+    function goBackCumple() {
+      document.getElementById('cumple-container').style.display = 'none';
+      document.querySelector('header').style.display = 'block';
+      document.querySelector('.slider').style.display = 'block';
+      document.querySelector('.extra').style.display = 'block';
+    }
   </script>
 </body>
 </html>
