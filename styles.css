@@ -421,4 +421,48 @@
   }
 }
 
+
+#audio-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff6fa;
+  padding: 8px 16px;
+  border-radius: 12px;
+  width: fit-content;
+  margin: 16px auto 0 auto;
+  box-shadow: 0 2px 8px #ff6b8133;
+  min-width: 340px;
+}
+
+#audio-controls button {
+  position: static;
+  font-size: 1.3em;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  border-radius: 6px;
+  padding: 4px 8px;
+}
+
+#audio-controls button:active {
+  background: #ffe0ec;
+}
+
+#seek-slider {
+  width: 180px;
+  accent-color: #ff6b81;
+  margin: 0 8px;
+}
+
+#audio-controls span {
+  font-family: monospace;
+  font-size: 1em;
+}
+
+#audio-bg {
+  display: none;
+}
+
   

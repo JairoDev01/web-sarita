@@ -11,6 +11,7 @@
     <h1>Hola, Sarita 🩷</h1>
     <p>Esta página es para recordarte lo especial y única que eres.</p>
   </header>
+
   <!-- Añadir el botón debajo del slider (sección principal) -->
   <section class="extra">
     <button class="btn-flowers" id="ver-arreglo-btn"
@@ -111,7 +112,15 @@
     <button class="prev" onclick="prevSlide()">&#10094;</button>
     <button class="next" onclick="nextSlide()">&#10095;</button>
   </section>
-
+  <section class="audio-controls" style="display: flex; align-items: center; justify-content: center;">
+    <div id="audio-controls" style="display: flex; align-items: center; justify-content: center; gap: 8px; height: 80px;">
+      <button id="play-pause-btn" style="align-self: center; margin-top: 40px">⏸️</button>
+      <button id="mute-btn" style="align-self: center;  margin-top: 40px">🔊</button>
+      <input type="range" id="seek-slider" min="0" value="0" step="1">
+      <span id="current-time">0:00</span> / <span id="duration">0:00</span>
+      <audio id="audio-bg" src="/canciones/ME%20GUSTAS%20-%20Grupo%20Frontera.mp3" autoplay loop></audio>
+    </div>
+  </section>
   <footer>
     <p>Creado con mucho cariño para Sarita. 🌸</p>
   </footer>
@@ -210,7 +219,81 @@ showSlide(index);
       document.querySelector('.slider').style.display = 'block';
       document.querySelector('.extra').style.display = 'block';
     }
+    const audio = document.getElementById('audio-bg');
+    const playPauseBtn = document.getElementById('play-pause-btn');
+    const muteBtn = document.getElementById('mute-btn');
+    const seekSlider = document.getElementById('seek-slider');
+    const currentTimeEl = document.getElementById('current-time');
+    const durationEl = document.getElementById('duration');
 
+    // Reproducir automáticamente al cargar
+    window.addEventListener('DOMContentLoaded', () => {
+      audio.play().catch(() => {
+        // Si el navegador bloquea, el usuario debe interactuar
+        playPauseBtn.textContent = '▶️';
+      });
+    });
+
+    // Actualizar duración cuando esté lista
+    audio.addEventListener('loadedmetadata', () => {
+      seekSlider.max = Math.floor(audio.duration);
+      durationEl.textContent = formatTime(audio.duration);
+    });
+
+    // Actualizar slider y tiempo actual
+    audio.addEventListener('timeupdate', () => {
+      seekSlider.value = Math.floor(audio.currentTime);
+      currentTimeEl.textContent = formatTime(audio.currentTime);
+    });
+
+    // Play/Pause
+    playPauseBtn.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play();
+        playPauseBtn.textContent = '⏸️';
+      } else {
+        audio.pause();
+        playPauseBtn.textContent = '▶️';
+      }
+    });
+
+    // Mute/Unmute
+    muteBtn.addEventListener('click', () => {
+      audio.muted = !audio.muted;
+      muteBtn.textContent = audio.muted ? '🔇' : '🔊';
+    });
+
+    // Slider para cambiar posición
+    seekSlider.addEventListener('input', () => {
+      audio.currentTime = seekSlider.value;
+    });
+
+    // Formato mm:ss
+    function formatTime(sec) {
+      const m = Math.floor(sec / 60);
+      const s = Math.floor(sec % 60).toString().padStart(2, '0');
+      return `${m}:${s}`;
+    }
+
+    /*// Solo muestra el botón si el autoplay falla
+    window.addEventListener('DOMContentLoaded', () => {
+      audio.play().catch(() => {
+        playPauseBtn.textContent = '▶️';
+        // Si quieres un botón extra para iniciar, créalo aquí:
+        if (!document.getElementById('start-audio-btn')) {
+          const startBtn = document.createElement('button');
+          startBtn.id = 'start-audio-btn';
+          startBtn.textContent = 'Iniciar música';
+          startBtn.style.marginLeft = '10px';
+          document.getElementById('audio-controls').appendChild(startBtn);
+          startBtn.addEventListener('click', () => {
+            audio.play();
+            startBtn.remove();
+            playPauseBtn.textContent = '⏸️';
+          });
+        }
+      });
+    });*/
   </script>
 </body>
 </html>
